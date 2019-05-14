@@ -36,6 +36,8 @@ services:
       - "data:${DATA_VOLUME_CONTAINER}"
     ports:
       - "443:443"
+      - "8080:8080"
+      - "8000:8000"
     links:
       - hub-db
     environment:
@@ -52,7 +54,6 @@ services:
       POSTGRES_HOST: hub-db
     env_file:
       - secrets/postgres.env
-      - secrets/oauth.env
     command: >
       jupyterhub -f /srv/jupyterhub/jupyterhub_config.py
 
